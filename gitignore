@@ -1,0 +1,21 @@
+# Generated data (too large for GitHub)
+data/raw/
+data/staging/
+data/analytical/
+data/*.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
