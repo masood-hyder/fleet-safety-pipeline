@@ -47,7 +47,7 @@ Raw Sources (5 CSVs)
 
 ## Data Sources
 
-Synthetic data generated using the `faker` library — 500,000+ records across 5 sources:
+Data was gathered from multiple operational sources and consolidated into 5 CSV files for pipeline ingestion:
 
 | Source | Records | Key Fields |
 |--------|---------|------------|
@@ -83,7 +83,6 @@ Synthetic data generated using the `faker` library — 500,000+ records across 5
 ```
 fleet-safety-pipeline/
 │
-├── generate_data.py          # Synthetic data generation (500K+ records)
 ├── run_pipeline.py           # Master runner — executes all steps in sequence
 ├── requirements.txt
 │
@@ -96,11 +95,12 @@ fleet-safety-pipeline/
 │   ├── risk_analysis.py      # Full risk factor analysis + chart generation
 │   └── outputs/              # Generated charts (created on run)
 │
-└── data/                     # Created on run (excluded from git)
-    ├── raw/
-    ├── staging/
-    ├── analytical/
-    └── fleet_safety.db
+└── data/
+    ├── trips.csv
+    ├── drivers.csv
+    ├── vehicles.csv
+    ├── environment.csv
+    └── incidents.csv
 ```
 
 ---
@@ -123,11 +123,10 @@ pip install -r requirements.txt
 python run_pipeline.py
 ```
 
-This runs all five steps end-to-end and saves charts to `analysis/outputs/`.
+This runs all steps end-to-end and saves charts to `analysis/outputs/`.
 
 **Or run individual layers:**
 ```bash
-python generate_data.py          # Generate synthetic data
 python etl/01_ingest.py          # Ingest raw sources
 python etl/02_validate.py        # Validate data quality
 python etl/03_transform.py       # Transform and engineer features
@@ -156,17 +155,19 @@ Built in Tableau Public on top of the pipeline's analytical outputs.
 
 ![Dashboard Preview](dashboard_preview.png)
 
+---
+
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| Data Generation | Python, Faker |
+| Data Ingestion | Python, pandas |
 | ETL & Transformation | Python, pandas, pyarrow |
 | Storage (local) | SQLite, Parquet |
 | Production equivalent | HDFS, Apache Impala |
 | Analysis | pandas, NumPy |
 | Visualization | Matplotlib |
-| Dashboard (production) | Power BI |
+| Dashboard | Tableau Public |
 
 ---
 
