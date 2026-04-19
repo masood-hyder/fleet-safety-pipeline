@@ -149,6 +149,13 @@ All charts are saved to `analysis/outputs/` after running the pipeline:
 
 ---
 
+## Live Dashboard
+Built in Tableau Public on top of the pipeline's analytical outputs.
+
+[View Interactive Dashboard →](https://public.tableau.com/app/profile/masood.hyder/viz/FleetSafetyandRiskAnalyticsDashboard/FleetSafetyRiskAnalyticsDashboard)
+
+![Dashboard Preview](dashboard_preview.png)
+
 ## Tech Stack
 
 | Layer | Technology |
